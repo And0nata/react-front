@@ -1,8 +1,11 @@
+import { NavLink } from "react-router-dom";
+
   const TableRow = (props) => {
     return(
       <tr>
       <th scope="row">{props.index+1}</th>
-      <td>{props.name} {props.lastname}</td>
+      <td><NavLink to={"/profile/"+props.id}>{props.name} {props.lastname}</NavLink></td>
+      <td>{props.email}</td>
     </tr>
     )
   }
@@ -12,7 +15,7 @@
    let userRow = [];
   
     for (let i = 0; i < usersCount; i++) {
-   userRow.push (<TableRow index={i} key={i} name={users[i].name} lastname={users[i].lastname}/>)
+   userRow.push (<TableRow id={users[i].id} index={i} key={i} name={users[i].name} lastname={users[i].lastname} email={users[i].email}/>)
     }
   return (
       <>
@@ -24,6 +27,7 @@
             <tr>
               <th className="col">#</th>
               <th className="col">Имя и фамилия</th>
+              <th className="col">email</th>
             </tr>
           </thead>
           <tbody>
